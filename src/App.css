@@ -1,0 +1,9 @@
+*{
+  font-size: 12px;
+}
+.form-label{
+  width: 30%;
+}
+.form-select{
+  width: 70%;
+}

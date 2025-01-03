@@ -30,7 +30,7 @@ function ManufacturerSearch() {
   const [productNumber, setProductNumber] = useState([]);
   const [selectedProductNumber, setSelectedProductNumber] = useState("");
 
-  const [allEquipmentData, setAllEquipmentData] = useState([]);
+  // const [allEquipmentData, setAllEquipmentData] = useState([]);
 
   console.log('manufacturers', manufacturers)
   console.log('selectedManufacturer', selectedManufacturer)
@@ -63,32 +63,32 @@ function ManufacturerSearch() {
       console.log('err', err)
     }
   }
-  const EquipmentApi = async () => {
-    try {
-      const startTime = performance.now();
-      const response = await axios.post("http://localhost:5000/api/Equipment", { selectedManufacturer: selectedManufacturer })
-      console.log('response', response?.data?.result[0]?.results)
-      const allEquipment = response?.data?.result[0]?.results
-      setAllEquipmentData(allEquipment);
+  // const EquipmentApi = async () => {
+  //   try {
+  //     const startTime = performance.now();
+  //     const response = await axios.post("http://localhost:5000/api/Equipment", { selectedManufacturer: selectedManufacturer })
+  //     console.log('response', response?.data?.result[0]?.results)
+  //     const allEquipment = response?.data?.result[0]?.results
+  //     setAllEquipmentData(allEquipment);
 
-      const equipmentNames = [...new Set(allEquipment.map(item => item.EQType))]
-      setEquipmentType(equipmentNames);
+  //     const equipmentNames = [...new Set(allEquipment.map(item => item.EQType))]
+  //     setEquipmentType(equipmentNames);
 
-      const productNames = [...new Set(allEquipment.map(item => item.MfgProdLine))]
-      setProductLine(productNames);
+  //     const productNames = [...new Set(allEquipment.map(item => item.MfgProdLine))]
+  //     setProductLine(productNames);
 
-      const productNumberNames = [...new Set(allEquipment.map(item => item.MfgProdNo))]
-      setProductNumber(productNumberNames);
+  //     const productNumberNames = [...new Set(allEquipment.map(item => item.MfgProdNo))]
+  //     setProductNumber(productNumberNames);
 
-      const endTime = performance.now();
-      if (selectedManufacturer != "") {
-        setExecutionTime(((endTime - startTime) / 1000).toFixed(2));
-      }
+  //     const endTime = performance.now();
+  //     if (selectedManufacturer != "") {
+  //       setExecutionTime(((endTime - startTime) / 1000).toFixed(2));
+  //     }
 
-    } catch (err) {
-      console.log('err', err)
-    }
-  }
+  //   } catch (err) {
+  //     console.log('err', err)
+  //   }
+  // }
   useEffect(() => {
     manufacturerApi();
   }, [])
